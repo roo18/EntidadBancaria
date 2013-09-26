@@ -4,23 +4,27 @@
  */
 package com.fpmislata.banco;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author alumno
  */
 public class EntidadBancaria {
     
-    private int idEntidad;
+    private int idEntidadBancaria;
     private String codigoEntidad;
     private String nombre;
     private String cif;
     private TipoEntidadBancaria entidad;
+    private List<SucursalBancaria> sucursalesBancarias = new ArrayList<>();
 
     public EntidadBancaria() {
     }
 
-    public EntidadBancaria(int idEntidad, String codigoEntidad, String nombre, String cif, TipoEntidadBancaria entidad) {
-        this.idEntidad = idEntidad;
+    public EntidadBancaria(int idEntidadBancaria, String codigoEntidad, String nombre, String cif, TipoEntidadBancaria entidad) {
+        this.idEntidadBancaria = idEntidadBancaria;
         this.codigoEntidad = codigoEntidad;
         this.cif = cif;
         this.nombre = nombre;
@@ -29,11 +33,11 @@ public class EntidadBancaria {
     }
 
     public int getIdEntidad() {
-        return idEntidad;
+        return idEntidadBancaria;
     }
 
     public void setIdEntidad(int idEntidad) {
-        this.idEntidad = idEntidad;
+        this.idEntidadBancaria = idEntidad;
     }
 
     public String getCodigoEntidad() {
@@ -66,6 +70,14 @@ public class EntidadBancaria {
 
     public void setEntidad(TipoEntidadBancaria entidad) {
         this.entidad = entidad;
+    }
+
+    public List<SucursalBancaria> getSucursalesBancarias() {
+        return sucursalesBancarias;
+    }
+
+    public void setSucursalesBancarias(List<SucursalBancaria> sucursalesBancarias) {
+        this.sucursalesBancarias = sucursalesBancarias;
     }
     
     

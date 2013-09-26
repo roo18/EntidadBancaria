@@ -10,14 +10,14 @@ package com.fpmislata.banco;
  */
 public class SucursalBancaria {
     private int idSucursalBancaria;
-    private String entidadBancaria;
+    private EntidadBancaria entidadBancaria;
     private String codigoSucursal;
     private String nombre;
 
     public SucursalBancaria() {
     }
 
-    public SucursalBancaria(int idSucursalBancaria, String entidadBancaria, String codigoSucursal, String nombre) {
+    public SucursalBancaria(int idSucursalBancaria, EntidadBancaria entidadBancaria, String codigoSucursal, String nombre) {
         this.idSucursalBancaria = idSucursalBancaria;
         this.entidadBancaria = entidadBancaria;
         this.codigoSucursal = codigoSucursal;
@@ -32,11 +32,11 @@ public class SucursalBancaria {
         this.idSucursalBancaria = idSucursalBancaria;
     }
 
-    public String getEntidadBancaria() {
+    public EntidadBancaria getEntidadBancaria() {
         return entidadBancaria;
     }
 
-    public void setEntidadBancaria(String entidadBancaria) {
+    public void setEntidadBancaria(EntidadBancaria entidadBancaria) {
         this.entidadBancaria = entidadBancaria;
     }
 

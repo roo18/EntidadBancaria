@@ -18,17 +18,19 @@ public class MovimientoBancario {
     private Date fecha;
     private BigDecimal saldoTotal;
     private String concepto;
+    private CuentaBancaria cuentaBancaria;
 
     public MovimientoBancario() {
     }
 
-    public MovimientoBancario(int idMovimientoBancario, TipoMovimientoBancario tipoMovimientoBancario, BigDecimal importe, Date fecha, BigDecimal saldoTotal, String concepto) {
+    public MovimientoBancario(int idMovimientoBancario, TipoMovimientoBancario tipoMovimientoBancario, BigDecimal importe, Date fecha, BigDecimal saldoTotal, String concepto, CuentaBancaria cuentaBancaria) {
         this.idMovimientoBancario = idMovimientoBancario;
         this.tipoMovimientoBancario = tipoMovimientoBancario;
         this.importe = importe;
         this.fecha = fecha;
         this.saldoTotal = saldoTotal;
         this.concepto = concepto;
+        this.cuentaBancaria = cuentaBancaria;
     }
 
     public int getIdMovimientoBancario() {
