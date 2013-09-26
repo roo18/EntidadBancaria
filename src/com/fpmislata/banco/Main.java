@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package entidadbancaria;
+package com.fpmislata.banco;
 
 /**
  *
  * @author alumno
  */
-public class EntidadBancaria {
+public class Main {
 
     /**
      * @param args the command line arguments
