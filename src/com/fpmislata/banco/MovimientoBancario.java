@@ -31,6 +31,8 @@ public class MovimientoBancario {
         this.saldoTotal = saldoTotal;
         this.concepto = concepto;
         this.cuentaBancaria = cuentaBancaria;
+        
+        
     }
 
     public int getIdMovimientoBancario() {
@@ -80,6 +82,16 @@ public class MovimientoBancario {
     public void setConcepto(String concepto) {
         this.concepto = concepto;
     }
+
+    public CuentaBancaria getCuentaBancaria() {
+        return cuentaBancaria;
+    }
+
+    public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
+        this.cuentaBancaria = cuentaBancaria;
+    }
+    
+    
     
     
 }

@@ -19,7 +19,7 @@ public class CuentaBancaria {
     private String dc;
     private BigDecimal saldo;
     private String cif;
-    private List<MovimientoBancario> movimientosBancarios = new ArrayList<>();
+    private List<MovimientoBancario> movimientosBancarios = new MovimientosBancarios();
 
     public CuentaBancaria() {
     }
