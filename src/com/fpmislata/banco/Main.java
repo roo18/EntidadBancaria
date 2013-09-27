@@ -40,7 +40,7 @@ public class Main {
 
         imprimirCuenta(cuentaBancaria1);
     }
-    //Cod entidad, sucursal, dc, numero de cuenta.
+   
 
     public static void imprimirCuenta(CuentaBancaria cuentaBancaria) {
         System.out.print(cuentaBancaria.getSucursalBancaria().getEntidadBancaria().getCodigoEntidad());
