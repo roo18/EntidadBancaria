@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,16 +89,55 @@ public class EntidadBancariaDAO {
         int lineasActualizadas = preparedStatement.executeUpdate();
 
         if (lineasActualizadas > 1) {
-             throw new RuntimeException("Se han borrado mas de un registro de la entidad: " + idEntidadBancaria);
-        } 
+            throw new RuntimeException("Se han borrado mas de un registro de la entidad: " + idEntidadBancaria);
+        }
 
     }
 
-    List<EntidadBancaria> findAll() {
-        return null;
+    List<EntidadBancaria> findAll() throws SQLException {
+        List<EntidadBancaria> entidadesBancarias = new ArrayList<>();
+        EntidadBancaria entidadBancaria;
+
+        String selectSQL = "SELECT idEntidad, codigoEntidad, nombre, cif, tipoEntidadBancaria FROM entidadbancaria";
+        preparedStatement = connection.prepareStatement(selectSQL);
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next() == true) {
+            entidadBancaria = new EntidadBancaria();
+            entidadBancaria.setIdEntidad(resultSet.getInt("idEntidad"));
+            entidadBancaria.setCodigoEntidad(resultSet.getString("codigoEntidad"));
+            entidadBancaria.setNombre(resultSet.getString("nombre"));
+            entidadBancaria.setCif(resultSet.getString("cif"));
+            String tipoEntidadBancaria = resultSet.getString("tipoEntidadBancaria");
+            entidadBancaria.setEntidad(TipoEntidadBancaria.valueOf(tipoEntidadBancaria));
+            entidadesBancarias.add(entidadBancaria);
+
+        }
+
+        return entidadesBancarias;
     }
 
-    List<EntidadBancaria> findByCodigo(String codigo) {
-        return null;
+    List<EntidadBancaria> findByCodigo(String codigo) throws SQLException {
+        List<EntidadBancaria> entidadesBancarias = new ArrayList<>();
+        EntidadBancaria entidadBancaria;
+
+        String selectSQL = "SELECT idEntidad, codigoEntidad, nombre, cif, tipoEntidadBancaria FROM entidadbancaria WHERE codigo = ";
+        preparedStatement = connection.prepareStatement(selectSQL);
+        preparedStatement.setString(1, codigo);
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next() == true) {
+            entidadBancaria = new EntidadBancaria();
+            entidadBancaria.setIdEntidad(resultSet.getInt("idEntidad"));
+            entidadBancaria.setCodigoEntidad(resultSet.getString("codigoEntidad"));
+            entidadBancaria.setNombre(resultSet.getString("nombre"));
+            entidadBancaria.setCif(resultSet.getString("cif"));
+            String tipoEntidadBancaria = resultSet.getString("tipoEntidadBancaria");
+            entidadBancaria.setEntidad(TipoEntidadBancaria.valueOf(tipoEntidadBancaria));
+            entidadesBancarias.add(entidadBancaria);
+
+        }
+
+        return entidadesBancarias;
     }
 }
