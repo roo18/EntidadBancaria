@@ -43,7 +43,7 @@ public class EntidadBancariaDAO {
             entidadBancaria.setCif(resultSet.getString("cif"));
             String tipoEntidadBancaria = resultSet.getString("tipoEntidadBancaria");
             entidadBancaria.setEntidad(TipoEntidadBancaria.valueOf(tipoEntidadBancaria));
-            
+
             if (resultSet.next() == true) {
                 throw new RuntimeException("Existe mas de una entidad bancaria " + idEntidadBancaria);
             }
@@ -55,13 +55,42 @@ public class EntidadBancariaDAO {
         return entidadBancaria;
     }
 
-    void insert(EntidadBancaria entidadBancaria) {
+    void insert(EntidadBancaria entidadBancaria) throws SQLException {
+        String insertTableSQL = "INSERT INTO entidadbancaria"
+                + "(idEntidad, codigoEntidad, nombre, cif, tipoEntidadBancaria) VALUES"
+                + "(?,?,?,?,?)";
+        preparedStatement = connection.prepareStatement(insertTableSQL);
+        preparedStatement.setInt(1, entidadBancaria.getIdEntidad());
+        preparedStatement.setString(2, entidadBancaria.getCodigoEntidad());
+        preparedStatement.setString(3, entidadBancaria.getNombre());
+        preparedStatement.setString(4, entidadBancaria.getCif());
+        preparedStatement.setString(5, entidadBancaria.getEntidad().toString());
+        preparedStatement.executeUpdate();
     }
 
-    void update(EntidadBancaria entidadBancaria) {
+    void update(EntidadBancaria entidadBancaria) throws SQLException {
+        String updateTableSQL = "UPDATE entidadBancaria SET codigoEntidad = ?, nombre = ? , cif= ?, tipoEntidadBancaria = ? WHERE idEntidad = ?";
+        preparedStatement = connection.prepareStatement(updateTableSQL);
+        preparedStatement.setString(1, entidadBancaria.getCodigoEntidad());
+        preparedStatement.setString(2, entidadBancaria.getNombre());
+        preparedStatement.setString(3, entidadBancaria.getCif());
+        preparedStatement.setString(4, entidadBancaria.getEntidad().toString());
+        preparedStatement.setInt(5, entidadBancaria.getIdEntidad());
+
+        preparedStatement.executeUpdate();
+
     }
 
-    void delete(int idEntidadBancaria) {
+    void delete(int idEntidadBancaria) throws SQLException {
+        String deleteSQL = "DELETE FROM entidadbancaria WHERE idEntidad = ?";
+        preparedStatement = connection.prepareStatement(deleteSQL);
+        preparedStatement.setInt(1, idEntidadBancaria);
+        int lineasActualizadas = preparedStatement.executeUpdate();
+
+        if (lineasActualizadas > 1) {
+             throw new RuntimeException("Se han borrado mas de un registro de la entidad: " + idEntidadBancaria);
+        } 
+
     }
 
     List<EntidadBancaria> findAll() {

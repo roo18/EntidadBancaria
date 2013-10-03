@@ -57,8 +57,8 @@ public class Main {
 //    
 
         EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAO();
-        EntidadBancaria entidadBancaria = entidadBancariaDAO.read(1);
-
-        System.out.println(entidadBancaria.getNombre());
+        EntidadBancaria entidadBancaria = new EntidadBancaria(5, "W89", "Caixa", "F85967485", TipoEntidadBancaria.BANCO);
+        entidadBancariaDAO.update(entidadBancaria);
+        
     }
 }
