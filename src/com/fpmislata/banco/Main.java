@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  *
@@ -57,8 +58,17 @@ public class Main {
 //    
 
         EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAO();
-        EntidadBancaria entidadBancaria = new EntidadBancaria(5, "W89", "Caixa", "F85967485", TipoEntidadBancaria.BANCO);
-        entidadBancariaDAO.delete(1);
+
+//        EntidadBancaria entidadBancaria = entidadBancariaDAO.read(2);
+//        System.out.println(entidadBancaria.getIdEntidad());
+//        System.out.println(entidadBancaria.getCodigoEntidad());
+//        System.out.println(entidadBancaria.getNombre());
+//        System.out.println(entidadBancaria.getCif());
+//        System.out.println(entidadBancaria.getSucursalesBancarias().toString());
         
+
+
+
+
     }
 }

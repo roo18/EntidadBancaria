@@ -17,7 +17,7 @@ public class EntidadBancaria {
     private String codigoEntidad;
     private String nombre;
     private String cif;
-    private TipoEntidadBancaria entidad;
+    private TipoEntidadBancaria tipoEntidadBancaria;
     private List<SucursalBancaria> sucursalesBancarias = new ArrayList<>();
 
     public EntidadBancaria() {
@@ -28,7 +28,7 @@ public class EntidadBancaria {
         this.codigoEntidad = codigoEntidad;
         this.cif = cif;
         this.nombre = nombre;
-        this.entidad = entidad;
+        this.tipoEntidadBancaria = entidad;
         
     }
 
@@ -64,12 +64,12 @@ public class EntidadBancaria {
         this.cif = cif;
     }
 
-    public TipoEntidadBancaria getEntidad() {
-        return entidad;
+    public TipoEntidadBancaria getTipoEntidadBancaria() {
+        return tipoEntidadBancaria;
     }
 
-    public void setEntidad(TipoEntidadBancaria entidad) {
-        this.entidad = entidad;
+    public void setTipoEntidadBancaria(TipoEntidadBancaria entidad) {
+        this.tipoEntidadBancaria = entidad;
     }
 
     public List<SucursalBancaria> getSucursalesBancarias() {
