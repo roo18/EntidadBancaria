@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fpmislata.banco;
+package com.fpmislata.banco.presentacion;
 
+import com.fpmislata.banco.negocio.EntidadBancaria;
+import com.fpmislata.banco.datos.EntidadBancariaDAO;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -16,7 +18,7 @@ import java.util.List;
  */
 public class Main {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, Exception {
 //        EntidadBancaria entidadBancaria1 = new EntidadBancaria(1, "E10", "Bankia", "C10203040", TipoEntidadBancaria.BANCO);
 //        EntidadBancaria entidadBancaria2 = new EntidadBancaria(2, "E10", "La Caixa", "B10453040", TipoEntidadBancaria.BANCO);
 //
@@ -59,12 +61,12 @@ public class Main {
 
         EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAO();
 
-//        EntidadBancaria entidadBancaria = entidadBancariaDAO.read(2);
-//        System.out.println(entidadBancaria.getIdEntidad());
-//        System.out.println(entidadBancaria.getCodigoEntidad());
-//        System.out.println(entidadBancaria.getNombre());
-//        System.out.println(entidadBancaria.getCif());
-//        System.out.println(entidadBancaria.getSucursalesBancarias().toString());
+        EntidadBancaria entidadBancaria = entidadBancariaDAO.read(2);
+        System.out.println(entidadBancaria.getIdEntidad());
+        System.out.println(entidadBancaria.getCodigoEntidad());
+        System.out.println(entidadBancaria.getNombre());
+        System.out.println(entidadBancaria.getCif());
+        System.out.println(entidadBancaria.getSucursalesBancarias().toString());
         
 
 

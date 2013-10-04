@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fpmislata.banco;
+package com.fpmislata.banco.datos;
 
+import com.fpmislata.banco.negocio.EntidadBancaria;
+import com.fpmislata.banco.negocio.TipoEntidadBancaria;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,13 +20,13 @@ import java.util.List;
  */
 public class EntidadBancariaDAO {
 
-    ConnectionFactory connectionFactory;
+    ConnectionFactory connectionFactory = new ConnectionFactoryImplJDBC();
 
     public EntidadBancariaDAO() throws ClassNotFoundException, SQLException {
 
     }
 
-    EntidadBancaria read(int idEntidadBancaria) throws SQLException, Exception {
+    public EntidadBancaria read(int idEntidadBancaria) throws SQLException, Exception {
         Connection connection = connectionFactory.getConnection();
         EntidadBancaria entidadBancaria;
 
@@ -53,7 +55,7 @@ public class EntidadBancariaDAO {
         return entidadBancaria;
     }
 
-    void insert(EntidadBancaria entidadBancaria) throws SQLException, Exception {
+    public void insert(EntidadBancaria entidadBancaria) throws SQLException, Exception {
         Connection connection = connectionFactory.getConnection();
         String insertTableSQL = "INSERT INTO entidadbancaria"
                 + "(idEntidad, codigoEntidad, nombre, cif, tipoEntidadBancaria) VALUES"
@@ -68,7 +70,7 @@ public class EntidadBancariaDAO {
         connection.close();
     }
 
-    void update(EntidadBancaria entidadBancaria) throws SQLException, Exception {
+    public void update(EntidadBancaria entidadBancaria) throws SQLException, Exception {
         Connection connection = connectionFactory.getConnection();
         String updateTableSQL = "UPDATE entidadBancaria SET codigoEntidad = ?, nombre = ? , cif= ?, tipoEntidadBancaria = ? WHERE idEntidad = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(updateTableSQL);
@@ -82,7 +84,7 @@ public class EntidadBancariaDAO {
         connection.close();
     }
 
-    void delete(int idEntidadBancaria) throws SQLException, Exception {
+    public void delete(int idEntidadBancaria) throws SQLException, Exception {
         Connection connection = connectionFactory.getConnection();
         String deleteSQL = "DELETE FROM entidadbancaria WHERE idEntidad = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
@@ -95,7 +97,7 @@ public class EntidadBancariaDAO {
         connection.close();
     }
 
-    List<EntidadBancaria> findAll() throws SQLException, Exception {
+    public List<EntidadBancaria> findAll() throws SQLException, Exception {
         Connection connection = connectionFactory.getConnection();
         List<EntidadBancaria> entidadesBancarias = new ArrayList<>();
         
@@ -118,7 +120,7 @@ public class EntidadBancariaDAO {
         return entidadesBancarias;
     }
 
-    List<EntidadBancaria> findByCodigo(String codigo) throws SQLException, Exception {
+    public List<EntidadBancaria> findByCodigo(String codigo) throws SQLException, Exception {
         Connection connection = connectionFactory.getConnection();
         List<EntidadBancaria> entidadesBancarias = new ArrayList<>();
         
